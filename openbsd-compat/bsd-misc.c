@@ -31,8 +31,10 @@
 #include <time.h>
 #include <unistd.h>
 
+#if 0
 #ifndef HAVE___PROGNAME
 char *__progname;
+#endif
 #endif
 
 /*
