@@ -1945,7 +1945,7 @@ mux_client_request_session(int fd)
 		leave_raw_mode(options.request_tty == REQUEST_TTY_FORCE);
 
 	if (muxclient_terminate) {
-		debug2("Exiting on signal %d", muxclient_terminate);
+		debug2("Exiting on signal %ld", muxclient_terminate);
 		exitval = 255;
 	} else if (!exitval_seen) {
 		debug2("Control master terminated unexpectedly");
