@@ -97,6 +97,7 @@ u_int	 cipher_ivlen(const struct sshcipher *);
 u_int	 cipher_is_cbc(const struct sshcipher *);
 
 u_int	 cipher_get_number(const struct sshcipher *);
+char	*cipher_get_name(const struct sshcipher *);
 int	 cipher_get_keyiv(struct sshcipher_ctx *, u_char *, u_int);
 int	 cipher_set_keyiv(struct sshcipher_ctx *, const u_char *);
 int	 cipher_get_keyiv_len(const struct sshcipher_ctx *);

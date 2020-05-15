@@ -279,6 +279,12 @@ cipher_number(const char *name)
 }
 
 char *
+cipher_get_name(const struct sshcipher *c)
+{
+	return (c->name);
+}
+
+char *
 cipher_name(int id)
 {
 	const struct sshcipher *c = cipher_by_number(id);
