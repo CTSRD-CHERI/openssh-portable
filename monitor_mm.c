@@ -176,6 +176,9 @@ mm_malloc(struct mm_master *mm, size_t size)
 {
 	struct mm_share *mms, *tmp;
 
+#ifdef __CHERI_PURE_CAPABILITY__
+	size = __builtin_cheri_round_representable_length(size);
+#endif
 	if (size == 0)
 		fatal("mm_malloc: try to allocate 0 space");
 	if (size > SIZE_MAX - MM_MINSIZE + 1)
@@ -208,7 +211,11 @@ mm_malloc(struct mm_master *mm, size_t size)
 			mm_free(mm->mmalloc, mms);
 	}
 
+#ifdef __CHERI_PURE_CAPABILITY__
+	return (__builtin_cheri_bounds_set_exact(tmp->address, size));
+#else
 	return (tmp->address);
+#endif
 }
 
 /* Frees memory in a memory mapped area */
